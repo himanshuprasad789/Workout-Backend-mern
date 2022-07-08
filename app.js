@@ -2,6 +2,7 @@
 const express = require("express");
 // imported mongoose to connect to db
 const mongoose = require("mongoose");
+const { DB_URL } = require("./apikey");
 //importing  route file for workout routes
 const WorkoutRoutes = require("./routes/workout");
 //instance of express app is created
@@ -25,8 +26,7 @@ app.get("/", (req, res) => {
 
 // mongoose connect to connect to db
 mongoose
-  .connect(
-    "mongodb+srv://workout:workoutcrud@cluster-workout.tcn8y6x.mongodb.net/?retryWrites=true&w=majority")
+  .connect(DB_URL)
   .then(() => {
     console.log("connected to db")
     // listens for request
